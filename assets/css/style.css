@@ -114,3 +114,56 @@ header h1{
     text-decoration: none;
     
 }
+
+.restaurante-box .precio{
+    color:white;
+    background: green;
+    font-size: 14px;
+    padding: 5px;
+    box-shadow: 2px 2px #016B26;
+    text-align: center;
+    width: 200px; 
+}
+
+.restaurante-box .direccion{
+    color:gray;
+
+}
+
+nav{
+    width: 100%;
+    background: #f2f2f2;
+    height: 45px;
+    font-size: 14px;
+    border-bottom:1px solid #DDD; 
+}
+
+nav ul{
+    margin:0px;
+    padding: 0px;
+}
+
+nav ul li{
+    margin:0px;
+    display: block;
+    float:left;
+    border-right: 1px solid white;
+    height: 45px;
+    line-height: 35px;
+}
+
+nav ul li a{
+    display: block;
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-decoration: none;
+    color:#444;
+    transition: all 100ms;
+}
+
+nav ul li a:hover{
+    background: #1976d2;
+    color:white;
+    opacity: 0.8;
+}

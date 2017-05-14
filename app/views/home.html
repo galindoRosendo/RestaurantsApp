@@ -5,6 +5,19 @@
     </a>
     <div class="clearfix"></div>
 </header>
+<nav id="nav">  
+    <ul>
+        <li>
+            <a [routerLink]="['Home']">Inicio</a>
+        </li>
+        <li>
+            <a [routerLink]="['CrearRestaurante']">Crear Restaurante</a>
+        </li>
+        <li>
+            <a [routerLink]="['Home']">Restaurante Aleatorio</a>
+        </li>
+    </ul>
+</nav>
 <section class="main">
 <!--Compoentenes de la pagina-->
     <router-outlet></router-outlet>
