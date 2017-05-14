@@ -43,3 +43,68 @@ header h1{
     color:white;
     float: left; 
 }
+
+.main{
+    padding: 15px;
+}
+
+.main h1{
+    color:#444;
+}
+
+#restaurantes-list{
+    padding: 0px;
+    margin:0px;
+}
+
+.restaurante-item .image{
+    height: 105px;
+    width: 105px;
+    overflow: hidden;
+    background: #ccc;
+    float: left;
+}
+
+.restaurante-item .data{
+    float: left;
+    margin-left: 20px;
+}
+
+.restaurante-item h4{
+    color: #444;
+    margin:0px;
+    padding: 0px;
+    margin-top:0px;
+}
+.restaurante-item{
+    list-style: none;
+    width: 100%;
+    border-top: 1px solid #ddd;
+    height: 200px;
+    float: left;
+    padding-top: 20px;
+    padding-bottom:20px;
+    color:gray; 
+} 
+
+.btn{
+    font-size: 13px;
+    border: 1px solid #ccc;
+    border-color:#1976D2;
+    border-radius: 4px;
+    box-shadow: 0px 0px 5px #ddd;
+    padding: 5px;
+    text-decoration: none;
+    color:white;
+    background:#0074D9; 
+}
+
+.btn-editar{
+    background: #0A0;
+    border-color:#59a600; 
+}
+
+.btn-eliminar{
+    background: #E23237;
+    border-color:#F54747; 
+}
