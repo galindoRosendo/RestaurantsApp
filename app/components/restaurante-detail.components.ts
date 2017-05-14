@@ -1,43 +1,41 @@
 import { Component, OnInit } from 'angular2/core';
 import {ORestaurante} from "../models/ORestaurante";
-import {ROUTER_DIRECTIVES, RouteConfig, Router} from "angular2/router";
+import {RouteParams} from "angular2/router";
 import {RestauranteService} from "../services/restaurante.service";
 
 @Component({
-    selector:'restaurantes-list',
-    templateUrl:'app/views/restaurantes-list.html',
-    directives:[ROUTER_DIRECTIVES],
+    selector:'restaurante-detail',
+    templateUrl:'app/views/restaurante-detail.html',
     providers:[RestauranteService]
 })
 
-export class RestaurantesListComponent implements OnInit{
-
-    public TituloPagina:string = 'Listado de Restaurantes';
-    public restaurantes:ORestaurante[];
+export class RestauranteDetailComponent implements OnInit{
+    
+    public restaurante:ORestaurante;
     public status:string;
     public errorMessage:string;
-    constructor(private _restauranteService:RestauranteService){
+
+    constructor(
+        private _restauranteService:RestauranteService,
+        private _routeParams:RouteParams
+        ){
 
     }
 
     ngOnInit(){
-        this.getRestaurantes();
-        console.log("restaurantesListComponent cargado");
+        this.getRestaurante();
     }
 
-    getRestaurantes(){
-        let box_restaurantes=<HTMLElement>document.querySelector("#restaurantes-list .loading");
-        box_restaurantes.style.visibility="visible";
-
-        this._restauranteService.getRestaurantes()
+    getRestaurante(){
+        let id=this._routeParams.get('id');
+        this._restauranteService.getRestaurante(id)
                                 .subscribe(
-                                    result=>{
-                                        this.restaurantes=result.data;
-                                        this.status=result.status;
+                                    response=>{
+                                        this.restaurante= response.data;
+                                        this.status=response.status;
                                         if(this.status!=="success"){
                                             alert("error en el servidor");
                                         }
-                                        box_restaurantes.style.display="none";
                                     },
                                     error=>{
                                         this.errorMessage=<any>error;

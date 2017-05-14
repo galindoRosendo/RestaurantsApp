@@ -1,10 +1,12 @@
 <header id="header">
-    <img id="logo" src="../../assets/images/angular.png" alt="">
-    <h1>{{TituloPagina}}</h1> 
+    <a [routerLink]="['Home']">
+        <img id="logo" src="../../assets/images/angular.png" alt="">
+        <h1>{{TituloPagina}}</h1> 
+    </a>
     <div class="clearfix"></div>
 </header>
 <section class="main">
 <!--Compoentenes de la pagina-->
-    <restaurantes-list></restaurantes-list>
+    <router-outlet></router-outlet>
     <div class="clearfix"></div>
 </section>

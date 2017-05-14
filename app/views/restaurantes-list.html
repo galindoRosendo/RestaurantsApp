@@ -1,15 +1,18 @@
 <h1> {{TituloPagina}} </h1>
 
 <ul id="restaurantes-list">
+    <li class="loading">
+        <center>
+            <img src="../../assets/images/loading.gif" />
+        </center>
+    </li>
     <li *ngFor="#restaurante of restaurantes" class="restaurante-item">
         <div class="image"></div>
         <div class="data">
             <h4>{{restaurante.nombre}}</h4>
-            <p>{{restaurante.direccion}}</p>
             <p>{{restaurante.descripcion}}</p>
-            <p>{{restaurante.precio}}</p>
             <p>
-                <a href="" class="btn btn-ver">Ver</a>
+                <a [routerLink]="['Restaurante',{id:restaurante.id}]" class="btn btn-ver">Ver</a>
                 <a href="" class="btn btn-editar">Editar</a>
                 <a href="" class="btn btn-eliminar">Eliminar</a>
             </p>

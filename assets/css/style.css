@@ -80,7 +80,7 @@ header h1{
     list-style: none;
     width: 100%;
     border-top: 1px solid #ddd;
-    height: 200px;
+    height: 100px;
     float: left;
     padding-top: 20px;
     padding-bottom:20px;
@@ -107,4 +107,10 @@ header h1{
 .btn-eliminar{
     background: #E23237;
     border-color:#F54747; 
+}
+
+.loading{
+    list-style: none;
+    text-decoration: none;
+    
 }

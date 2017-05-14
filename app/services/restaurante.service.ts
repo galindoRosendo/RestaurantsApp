@@ -16,4 +16,9 @@ export class RestauranteService{
         return this._http.get(this.webApi + 'restaurantes')
                          .map(res=>res.json());
     }
+
+    getRestaurante(id:string){
+        return this._http.get(this.webApi + 'restaurante/'+id)
+                         .map(res=>res.json());
+    }
 }
