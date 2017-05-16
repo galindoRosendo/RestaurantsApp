@@ -1,5 +1,5 @@
 import {Injectable} from "angular2/core";
-import {Http, Response} from "angular2/http";
+import {Http, Response,Headers} from "angular2/http";
 import "rxjs/add/operator/map";
 import {Observable} from "rxjs/Observable";
 import {ORestaurante} from "../models/ORestaurante";
@@ -20,5 +20,19 @@ export class RestauranteService{
     getRestaurante(id:string){
         return this._http.get(this.webApi + 'restaurante/'+id)
                          .map(res=>res.json());
+    }
+
+    addRestaurante(restaurante:ORestaurante){
+        let json =JSON.stringify(restaurante);
+        let params="json="+json;
+        let headers= new Headers({"Content-Type":"application/x-www-form-urlencoded"});
+
+        return this._http.post(
+                                this.webApi + "restaurantes", 
+                                params, 
+                                {
+                                    headers:headers
+                                }
+                            ).map(res=>res.json());
     }
 }

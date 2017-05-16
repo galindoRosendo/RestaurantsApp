@@ -23,6 +23,30 @@ export class RestauranteAddComponent implements OnInit{
 
     }
 
+    onSubmit(){
+        this._restauranteService.addRestaurante(this.restaurante)
+                                .subscribe(
+                                    response=>{
+                                        this.status=response.status;
+                                        if(this.status!="success"){
+                                            alert("Error en el servidor");
+                                        }
+                                    },
+                                   error=>{
+                                        this.errorMessage=<any>error;
+                                        if(this.errorMessage!==null){
+                                            console.log(this.errorMessage);
+                                            alert("error en la peticion");
+                                        }
+                                    }
+                                );
+        this._router.navigate(['Home']);
+    }
+
+    callPrecio(value){
+        this.restaurante.precio=value;
+    }
+
     ngOnInit(){
         this.restaurante= new ORestaurante(
             0,
