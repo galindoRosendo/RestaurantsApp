@@ -4,17 +4,18 @@ import {RouteParams, Router} from "angular2/router";
 import {RestauranteService} from "../services/restaurante.service";
 
 @Component({
-    selector:'restaurante-add',
+    selector:'restaurante-edit',
     templateUrl:'app/views/restaurante-add.html',
     providers:[RestauranteService]
 })
 
-export class RestauranteAddComponent implements OnInit{
+export class RestauranteEditComponent implements OnInit{
     
     public restaurante:ORestaurante;
     public status:string;
     public errorMessage:string;
-    public titulo:string="Añadir restaurante";
+    public titulo:string="Editar Restaurante";
+
     constructor(
         private _restauranteService:RestauranteService,
         private _routeParams:RouteParams,
@@ -24,7 +25,7 @@ export class RestauranteAddComponent implements OnInit{
     }
 
     onSubmit(){
-        this._restauranteService.addRestaurante(this.restaurante)
+        this._restauranteService.editRestaurante(this.restaurante.id,this.restaurante)
                                 .subscribe(
                                     response=>{
                                         this.status=response.status;
@@ -41,6 +42,7 @@ export class RestauranteAddComponent implements OnInit{
                                     }
                                 );
         this._router.navigate(['Home']);
+        
     }
 
     callPrecio(value){
@@ -49,14 +51,35 @@ export class RestauranteAddComponent implements OnInit{
 
     ngOnInit(){
         this.restaurante= new ORestaurante(
-            0,
+            parseInt(this._routeParams.get('id')),
             this._routeParams.get('nombre'),
             this._routeParams.get('direccion'),
             this._routeParams.get('descripcion'),
             "null",
-            "bajo"
+            this._routeParams.get('precio')
             );
-        console.log("Componente rest add cargado")
+        console.log("Componente rest edit cargado");
+        this.getRestaurante();
     }
-    
+
+    getRestaurante(){
+        let id=this._routeParams.get('id');
+        this._restauranteService.getRestaurante(id)
+                                .subscribe(
+                                    response=>{
+                                        this.restaurante= response.data;
+                                        this.status=response.status;
+                                        if(this.status!=="success"){
+                                        this._router.navigate(["Home"]);        
+                                                                                }
+                                    },
+                                    error=>{
+                                        this.errorMessage=<any>error;
+                                        if(this.errorMessage!==null){
+                                            console.log(this.errorMessage);
+                                            alert("error en la peticion");
+                                        }
+                                    }
+                                );
+    }
 }

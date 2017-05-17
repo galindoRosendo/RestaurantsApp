@@ -97,6 +97,7 @@ header h1{
     text-decoration: none;
     color:white;
     background:#0074D9; 
+    cursor: pointer;
 }
 
 .btn-editar{

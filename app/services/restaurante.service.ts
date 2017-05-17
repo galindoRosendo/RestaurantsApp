@@ -35,4 +35,23 @@ export class RestauranteService{
                                 }
                             ).map(res=>res.json());
     }
+
+    editRestaurante(id:number,restaurante:ORestaurante){
+        let json =JSON.stringify(restaurante);
+        let params="json="+json;
+        let headers= new Headers({"Content-Type":"application/x-www-form-urlencoded"});
+
+        return this._http.post(
+                                this.webApi + "update-restaurante/"+id, 
+                                params, 
+                                {
+                                    headers:headers
+                                }
+                            ).map(res=>res.json());
+    }
+
+    deleteRestaurante(id:number){
+                return this._http.get(this.webApi + 'delete-restaurante/'+id)
+                         .map(res=>res.json());
+    }
 }

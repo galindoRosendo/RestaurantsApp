@@ -1,4 +1,6 @@
-<h1>Nuevo restaurante</h1>
+<h1>
+    {{titulo}}
+</h1>
 
 <form #formRestaurante="ngForm" (ngSubmit)="onSubmit()">
     <label >Nombre:</label>
@@ -23,10 +25,10 @@
     <label >Precio:</label>
     <p>
         <select (change)="callPrecio(precio.value)" name="" #precio>
-            <option value="bajo">Bajo</option>
-            <option value="normal">Normal</option>
-            <option value="alto">Alto</option>
+            <option value="bajo" [attr.selected]="restaurante.precio==='bajo'?'selected':null">Bajo</option>
+            <option value="normal" [attr.selected]="restaurante.precio==='bajo'?'selected':null">Normal</option>
+            <option value="alto" [attr.selected]="restaurante.precio==='bajo'?'selected':null"z>Alto</option>
         </select>
     </p>
-    <input type="submit" value="Crear Restaurante" [disabled]="!formRestaurante.form.valid">
+    <input type="submit" value="{{titulo}}" [disabled]="!formRestaurante.form.valid">
 </form>

@@ -48,4 +48,25 @@ export class RestaurantesListComponent implements OnInit{
                                     }
                                 );
     }
+
+    onBorrarRestaurante(id:number){
+                this._restauranteService.deleteRestaurante(id)
+                                .subscribe(
+                                    result=>{
+                                        this.restaurantes=result.data;
+                                        this.status=result.status;
+                                        if(this.status!=="success"){
+                                            alert("error en el servidor");
+                                        }
+                                        this.getRestaurantes();
+                                    },
+                                    error=>{
+                                        this.errorMessage=<any>error;
+                                        if(this.errorMessage!==null){
+                                            console.log(this.errorMessage);
+                                            alert("error en la peticion");
+                                        }
+                                    }
+                                );
+    }
 }

@@ -2,6 +2,7 @@ import { Component } from 'angular2/core';
 import { RestaurantesListComponent } from './components/restaurantes-list.components';
 import { RestauranteDetailComponent } from './components/restaurante-detail.components';
 import { RestauranteAddComponent } from './components/restaurante-add.components';
+import { RestauranteEditComponent } from './components/restaurante-edit.components';
 import {ROUTER_DIRECTIVES, RouteConfig, Router} from "angular2/router";
 
 @Component({
@@ -16,7 +17,8 @@ import {ROUTER_DIRECTIVES, RouteConfig, Router} from "angular2/router";
 @RouteConfig([
     {path:"/",name:"Home", component:RestaurantesListComponent, useAsDefault:true},
     {path:"/restaurante/:id",name:"Restaurante", component:RestauranteDetailComponent},
-    {path:"/crear-restaurante/",name:"CrearRestaurante", component:RestauranteAddComponent}    
+    {path:"/crear-restaurante/",name:"CrearRestaurante", component:RestauranteAddComponent}, 
+    {path:"/editar-restaurante/:id",name:"EditarRestaurante", component:RestauranteEditComponent}    
 ])
 
 export class AppComponent{
