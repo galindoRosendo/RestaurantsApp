@@ -168,3 +168,11 @@ nav ul li a:hover{
     color:white;
     opacity: 0.8;
 }
+
+.confirm{
+    float: left;
+    position:absolute;
+    background: white;
+    padding: 10px;
+    margin-top: -45px;
+}

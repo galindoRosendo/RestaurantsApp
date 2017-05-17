@@ -16,6 +16,8 @@ export class RestaurantesListComponent implements OnInit{
     public restaurantes:ORestaurante[];
     public status:string;
     public errorMessage:string;
+    public confirmado;
+
     constructor(private _restauranteService:RestauranteService){
 
     }
@@ -47,6 +49,14 @@ export class RestaurantesListComponent implements OnInit{
                                         }
                                     }
                                 );
+    }
+
+    onBorrarConfirm(id:number){
+        this.confirmado=id;
+    }
+
+    onCancelarConfirm(id:number){
+        this.confirmado=null;
     }
 
     onBorrarRestaurante(id:number){

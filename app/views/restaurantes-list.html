@@ -14,8 +14,12 @@
             <p>
                 <a [routerLink]="['Restaurante',{id:restaurante.id}]" class="btn btn-ver">Ver</a>
                 <a [routerLink]="['EditarRestaurante',{id:restaurante.id}]" class="btn btn-editar">Editar</a>
-                <a (click)="onBorrarRestaurante(restaurante.id)" class="btn btn-eliminar">Eliminar</a>
+                <a (click)="onBorrarConfirm(restaurante.id)" class="btn btn-eliminar">Eliminar</a>
             </p>
+            <div class="confirm" *ngIf="confirmado === restaurante.id">
+                <a (click)="onBorrarRestaurante(restaurante.id)" class="btn btn-eliminar">Eliminar</a>
+                <a (click)="onCancelarConfirm(restaurante.id)" class="btn btn-ver">Cancelar</a>    
+            </div>        
         </div>
         <div class="clearfix"></div>
     </li>
