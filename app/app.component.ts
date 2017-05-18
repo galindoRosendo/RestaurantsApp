@@ -18,7 +18,8 @@ import {ROUTER_DIRECTIVES, RouteConfig, Router} from "angular2/router";
     {path:"/",name:"Home", component:RestaurantesListComponent, useAsDefault:true},
     {path:"/restaurante/:id",name:"Restaurante", component:RestauranteDetailComponent},
     {path:"/crear-restaurante/",name:"CrearRestaurante", component:RestauranteAddComponent}, 
-    {path:"/editar-restaurante/:id",name:"EditarRestaurante", component:RestauranteEditComponent}    
+    {path:"/editar-restaurante/:id",name:"EditarRestaurante", component:RestauranteEditComponent},    
+    {path:"/restaurante-aleatorio/:random",name:"RestauranteAleatorio", component:RestauranteDetailComponent}    
 ])
 
 export class AppComponent{

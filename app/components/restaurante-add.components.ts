@@ -15,6 +15,9 @@ export class RestauranteAddComponent implements OnInit{
     public status:string;
     public errorMessage:string;
     public titulo:string="Añadir restaurante";
+    public filesToUpload:Array<File>;
+    public resultUpload;
+    
     constructor(
         private _restauranteService:RestauranteService,
         private _routeParams:RouteParams,
@@ -59,7 +62,19 @@ export class RestauranteAddComponent implements OnInit{
         console.log("Componente rest add cargado")
     }
 
-    makeFileRequest(URL:string, params:Array<string>, files:Array<string>){
+    fileChangeEvent(fileInput:any){
+        this.filesToUpload=<Array<File>>fileInput.target.files;
+
+        this.makeFileRequest("http://nld.bdtdevelop.com/apiAngular2/index.php/upload-file", [],this.filesToUpload).then((result)=>{
+            this.resultUpload=result;
+            this.restaurante.imagen=this.resultUpload.filename;
+            console.log(this.resultUpload.filename);
+        },(error)=>{
+            console.log(error);
+        });
+    }
+
+    makeFileRequest(URL:string, params:Array<string>, files:Array<File>){
         return new Promise((resolve, reject)=>{
             var formData: any= new FormData();
             var xhr= new XMLHttpRequest();

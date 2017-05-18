@@ -7,7 +7,9 @@
         </center>
     </li>
     <li *ngFor="#restaurante of restaurantes" class="restaurante-item">
-        <div class="image"></div>
+        <div class="image">
+            <img src="http://nld.bdtdevelop.com/apiAngular2/uploads/{{restaurante.imagen}}" alt="" *ngIf="restaurante.imagen && restaurante.imagen!=='null'">
+        </div>
         <div class="data">
             <h4>{{restaurante.nombre}}</h4>
             <p>{{restaurante.descripcion}}</p>

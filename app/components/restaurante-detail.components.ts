@@ -29,7 +29,8 @@ export class RestauranteDetailComponent implements OnInit{
 
     getRestaurante(){
         let id=this._routeParams.get('id');
-        this._restauranteService.getRestaurante(id)
+        let random=this._routeParams.get('random');
+        this._restauranteService.getRestaurante(id, random)
                                 .subscribe(
                                     response=>{
                                         this.restaurante= response.data;

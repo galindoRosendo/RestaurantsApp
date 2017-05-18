@@ -17,9 +17,15 @@ export class RestauranteService{
                          .map(res=>res.json());
     }
 
-    getRestaurante(id:string){
-        return this._http.get(this.webApi + 'restaurante/'+id)
-                         .map(res=>res.json());
+    getRestaurante(id:string, random=null){
+        if(random==null){
+            return this._http.get(this.webApi + 'restaurante/'+id)
+                             .map(res=>res.json());
+        }else{
+            return this._http.get(this.webApi + 'random-restaurante')
+                             .map(res=>res.json());
+        }
+        
     }
 
     addRestaurante(restaurante:ORestaurante){
