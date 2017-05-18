@@ -58,5 +58,26 @@ export class RestauranteAddComponent implements OnInit{
             );
         console.log("Componente rest add cargado")
     }
+
+    makeFileRequest(URL:string, params:Array<string>, files:Array<string>){
+        return new Promise((resolve, reject)=>{
+            var formData: any= new FormData();
+            var xhr= new XMLHttpRequest();
+            for(var i =0;i<files.length;i++){
+                formData.append("uploads[]", files[i], files[i].name);
+            }
+            xhr.onreadystatechange= function(){
+                if(xhr.readyState==4){
+                    if(xhr.status==200){
+                        resolve(JSON.parse(xhr.response))
+                    }else{
+                        reject(xhr.response);
+                    }
+                }
+            }
+            xhr.open("POST",URL,true);
+            xhr.send(formData);
+        });
+    }
     
 }

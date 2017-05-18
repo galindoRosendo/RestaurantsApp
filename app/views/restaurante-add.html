@@ -30,5 +30,10 @@
             <option value="alto" [attr.selected]="restaurante.precio==='bajo'?'selected':null"z>Alto</option>
         </select>
     </p>
+
+    <label >Imagen:</label>
+    <p>
+        <input type="file" placeholder="Subir Imagen">
+    </p>
     <input type="submit" value="{{titulo}}" [disabled]="!formRestaurante.form.valid">
 </form>
